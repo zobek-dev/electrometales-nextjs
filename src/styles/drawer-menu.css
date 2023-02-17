@@ -1,0 +1,17 @@
+/* Drawer menu interaction */
+
+.drawer-menu{
+  @apply invisible transition-[visibility] duration-200 ease-linear fixed z-[9999] w-[100vw] h-full top-0 left-0 flex justify-start bg-[rgba(10,10,10,.5)];
+}
+
+.drawer-menu.active{
+  @apply visible;
+}
+
+.menu-inner{
+  @apply -translate-x-full transition-transform duration-200 ease-linear bg-white h-full w-[420px] px-4 flex flex-col z-[9999];
+}
+
+.drawer-menu.active .menu-inner{
+  @apply translate-x-0;
+}
