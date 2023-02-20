@@ -2,14 +2,20 @@
   @apply max-w-[1380px] mx-auto px-4
 }
 
-.drawer-menu{
-
-}
-
-.drawer-menu.active{
-
-}
-
 body{
   @apply font-raleway;
+}
+
+html{
+
+}
+
+.swiper{
+  @apply pb-12
+}
+
+.swiper-pagination-bullet{
+  width:12px !important;
+  height: 12px !important;
+  background-color: rgba(255,255,255,.4) !important;
 }

@@ -8,7 +8,6 @@ import { useState, useEffect } from "react"
 
 export const Header = () => {
   const [open, setOpen] = useState(false)
-
   const [clientWindowHeight, setClientWindowHeight] = useState('')
 
   const handleScroll = () => {
@@ -22,7 +21,7 @@ export const Header = () => {
   const headerLinks = [ 
     {
       title: "Inicio",
-      url: "#Inicio"
+      url: "/"
     },
     {
       title: "Electropintado",
@@ -35,10 +34,10 @@ export const Header = () => {
   ]
 
   return (
-    <header id="Inicio" className={`shadow-[0_4px_4px_rgba(0,0,0,0.25)] bg-white ${clientWindowHeight > 50 ? "sticky w-full z-[99] top-0 left-0" : ""}`}>
+    <header className={`shadow-[0_4px_4px_rgba(0,0,0,0.25)] bg-white ${clientWindowHeight > 50 ? "sticky w-full z-[99] top-0 left-0" : ""}`}>
       <div className="wrapper">
         <div className="flex justify-between items-center py-4">
-          <Link href="#Inicio">
+          <Link href="/">
             <Logo className="hidden lg:block"/>
             <LogoMobile className="block lg:hidden"/>
           </Link>
