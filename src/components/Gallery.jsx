@@ -2,8 +2,10 @@ import {Swiper, SwiperSlide} from 'swiper/react'
 import SwiperCore, { Navigation, Pagination } from 'swiper'
 import Image from 'next/image'
 import { ElectroUno, ElectroDos, ElectroTres, ElectroCuatro, ElectroCinco, ElectroSeis } from '@/images'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { ArrowLeft, ArrowRight } from '@/icons'
+import FsLightbox from 'fslightbox-react'
+
 
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -11,16 +13,31 @@ import 'swiper/css/pagination'
 
 SwiperCore.use([Navigation])
 
+const images = [ElectroUno, ElectroDos, ElectroTres, ElectroCuatro, ElectroCinco, ElectroSeis]
+const imagesSrc = [ElectroUno.src, ElectroDos.src, ElectroTres.src, ElectroCuatro.src, ElectroCinco.src, ElectroSeis.src]
+
 export const Gallery = () => {
-  const buttonPrev = useRef(null)
-  const buttonNext = useRef(null)
+  const prev = useRef(null)
+  const next = useRef(null)
+  const [toggler, setToggler] = useState({
+    open:false,
+    slide: 1
+  })
+
+  const openLightbox = (number) => {
+    setToggler({
+      open: !toggler.open,
+      slide: number
+    })
+  }
+
   return(
     <div className="wrapper overflow-hidden pb-12">
       <div className="flex justify-end gap-x-4 lg:py-4 lg:mb-2">
-        <button ref={buttonPrev} className="hidden lg:block">
+        <button ref={prev} className="hidden lg:block">
           <ArrowLeft/>
         </button>
-        <button ref={buttonNext} className="hidden lg:block">
+        <button ref={next} className="hidden lg:block">
           <ArrowRight/>
         </button>
       </div>
@@ -30,88 +47,42 @@ export const Gallery = () => {
         modules={[ Navigation, Pagination ]}
         breakpoints={{
           450: {
-            slidesPerView: 1.5
+            slidesPerView: 1.2
           },
           640: {
             slidesPerView: 2.5
           }
-        }}
-        navigation={{ 
-          prevEl: buttonPrev.current,
-          nextEl: buttonNext.current,
         }}
         pagination = {{
           clickable: true
         }}
+        onInit={
+          (swiper)=>{
+            swiper.params.navigation.prevEl = prev.current
+            swiper.params.navigation.nextEl = next.current
+            swiper.navigation.init()
+            swiper.navigation.update()
+          }        
+        }
       >
-        <SwiperSlide>
-          <Image 
-            src={ElectroUno}
-            alt="Electrometales"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image 
-            src={ElectroDos}
-            alt="Electrometales"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image 
-            src={ElectroTres}
-            alt="Electrometales"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image 
-            src={ElectroCuatro}
-            alt="Electrometales"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image 
-            src={ElectroCinco}
-            alt="Electrometales"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image 
-            src={ElectroSeis}
-            alt="Electrometales"
-          />
-        </SwiperSlide>
+        {
+          images.map((image, index) => (
+            <SwiperSlide key={index}>
+              <button onClick={()=>openLightbox(index + 1)} className="transition-opacity duration-200 ease-in-out hover:opacity-70">
+                <Image 
+                  src={image}
+                  alt="Electrometales"
+                />
+              </button>
+            </SwiperSlide>
+          ))
+        }
       </Swiper>
-       {/*}
-      <Swiper 
-        modules={[Navigation, Pagination]} 
-        spaceBetween={16}
-        slidesPerView={1.5}
-       
-        navigation={{ 
-          prevEl: buttonPrev.current,
-          nextEl: buttonNext.current,
-        }}
-        onBeforeInit={(swiper)=>{
-          swiper.params.navigation.prevEl = buttonPrev
-          swiper.params.navigation.nextEl = buttonNext
-        }}
-      >
-
-       onBeforeInit={(swiper)=>{
-          swiper.params.navigation.prevEl = buttonPrev
-          swiper.params.navigation.nextEl = buttonNext
-        }}
-        
-      </Swiper> 
-      
-        breakpoints={{
-          640: {
-            slidesPerView: 2.5
-          },
-          1040: {
-            slidesPerView: 3.5
-          }
-        }} */} 
+      <FsLightbox
+				toggler={toggler.open}
+				sources={imagesSrc}
+				slide={toggler.slide}
+			/>
     </div> 
   )
 }

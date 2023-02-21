@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer'
 import { Hero } from '@/components/Hero' 
 import { Gallery } from '@/components/Gallery' 
 import { Services } from '@/components/Services'
+import { Contact } from '@/components/Contact'
 
 
 
@@ -23,6 +24,7 @@ export default function Home() {
         <Hero/> 
         <Services/>
         <Gallery/>
+        <Contact/>
       </main>
       <Footer/>
     </>

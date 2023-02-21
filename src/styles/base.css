@@ -6,10 +6,6 @@ body{
   @apply font-raleway;
 }
 
-html{
-
-}
-
 .swiper{
   @apply pb-12
 }
@@ -17,5 +13,9 @@ html{
 .swiper-pagination-bullet{
   width:12px !important;
   height: 12px !important;
-  background-color: rgba(255,255,255,.4) !important;
+  background-color: rgba(0,0,0,.5) !important;
+}
+
+.swiper-pagination-bullet-active{
+  background-color: rgba(0,0,0) !important;
 }

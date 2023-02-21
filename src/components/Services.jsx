@@ -8,7 +8,7 @@ export const Services = () => {
   return(
     <section className="py-8" id="Electropintado">
       <div className="wrapper">
-        <h2 className="uppercase text-black text-center mb-12 font-bold text-2xl lg:text-4xl">Nuestros <strong className="text-[#999999]">Servicios</strong></h2>
+        <h2 className="uppercase text-black text-center mb-4 lg:mb-12 font-bold text-2xl lg:text-4xl">Nuestros <strong className="text-[#999999]">Servicios</strong></h2>
         <div className="grid lg:grid-cols-2">
           <div className="row-start-2 row-end-3 lg:row-start-auto lg:row-end-auto">
             <Image
@@ -17,7 +17,7 @@ export const Services = () => {
             />
           </div>
           <div>
-            <h3 className="text-black text-xl lg:text-[32px] uppercase font-bold tracking-[2px] text-center my-8">Electropintado</h3>
+            <h3 className="text-black text-xl lg:text-[32px] uppercase font-bold tracking-[2px] text-center my-4 lg:my-8">Electropintado</h3>
             <p className="tracking-[1.5px] text-center mb-8">La pintura electroestática, es un recubrimiento que se aplica como polvo seco generalmente sobre estructura metálicas. Logra un acabado uniforme y resistente.</p>
             <ul className="flex flex-col lg:flex-row items-center gap-4 mb-12">
               <li className="max-w-[250px]">
