@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export const Contact = () => {
   return(
-    <section>
+    <section id="Contacto">
       <div className="wrapper">
         <div className="grid lg:grid-cols-2">
           <div className="flex flex-col col-span-1 my-8">
