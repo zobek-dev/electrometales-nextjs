@@ -8,16 +8,16 @@ import { useState, useEffect } from "react"
 
 export const Header = () => {
   const [open, setOpen] = useState(false)
-  const [clientWindowHeight, setClientWindowHeight] = useState('')
+  // const [clientWindowHeight, setClientWindowHeight] = useState('')
 
-  const handleScroll = () => {
-    setClientWindowHeight(window.scrollY)
-  }
+  // const handleScroll = () => {
+  //   setClientWindowHeight(window.scrollY)
+  // }
 
-  useEffect(()=> {
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll);
-  })
+  // useEffect(()=> {
+  //   window.addEventListener("scroll", handleScroll)
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // })
   const headerLinks = [ 
     {
       title: "Inicio",
@@ -32,9 +32,9 @@ export const Header = () => {
       url: "#Contacto"
     }
   ]
-
+  // ${clientWindowHeight > 50 ? "sticky w-full z-[99] top-0 left-0" : ""}
   return (
-    <header className={`shadow-[0_4px_4px_rgba(0,0,0,0.25)] bg-white ${clientWindowHeight > 50 ? "sticky w-full z-[99] top-0 left-0" : ""}`}>
+    <header className={`shadow-[0_4px_4px_rgba(0,0,0,0.25)] bg-white`}>
       <div className="wrapper">
         <div className="flex justify-between items-center py-4">
           <Link href="/">
